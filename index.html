@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💐 Chúc Mừng Ngày 20/10 💐</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #ffcad4, #f7a9a8, #ee9ca7);
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 25px;
+      text-shadow: 0 0 25px rgba(255,255,255,0.9);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #message {
+      max-width: 850px;
+      font-size: 1.4em;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      border-right: 2px solid rgba(255,255,255,0.8);
+      animation: blink 1s step-end infinite;
+      text-shadow: 0 0 15px rgba(255,255,255,0.6);
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: rgba(255,255,255,0.8); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hoa hồng rơi */
+    .rose {
+      position: fixed;
+      top: -10px;
+      width: 35px;
+      height: 35px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/747/747310.png');
+      background-size: cover;
+      animation: fall linear infinite;
+      opacity: 0.85;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    audio {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    /* Bản quyền */
+    footer {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      font-size: 0.9em;
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
+      text-shadow: 0 0 5px rgba(255,255,255,0.5);
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💐 Chúc Mừng Ngày 20/10 💐</h1>
+  <p id="message"></p>
+
+  <audio controls autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9eab85a97b.mp3?filename=romantic-piano-ambient-11132.mp3" type="audio/mpeg">
+  </audio>
+
+  <footer>© 2025 Gareth Chung</footer>
+
+  <script>
+    const text = `Chúc cho mọi người đẹp luôn tự tin, luôn biết mình xứng đáng được yêu thương và chiều chuộng.
+Dù là ai, dù đang ở đâu, cũng hãy cho phép bản thân được tận hưởng ngày hôm nay trọn vẹn nhất – 
+ăn ngon hơn một chút, cười tươi hơn một chút, và yêu bản thân hơn rất nhiều. 🌹`;
+
+    const messageEl = document.getElementById("message");
+    let index = 0;
+
+    // Hiệu ứng gõ chữ
+    function typeText() {
+      if (index < text.length) {
+        messageEl.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeText, 45); // tốc độ gõ
+      } else {
+        messageEl.style.borderRight = "none";
+      }
+    }
+
+    typeText();
+
+    // Hoa hồng rơi ngẫu nhiên
+    function createRose() {
+      const rose = document.createElement('div');
+      rose.classList.add('rose');
+      rose.style.left = Math.random() * 100 + 'vw';
+      rose.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      rose.style.opacity = Math.random() * 0.9 + 0.3;
+      rose.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(rose);
+      setTimeout(() => rose.remove(), 8000);
+    }
+
+    setInterval(createRose, 300);
+  </script>
+
+</body>
+</html>
